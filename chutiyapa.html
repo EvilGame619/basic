@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LELO</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .mainbox{
+            height: 96vh;
+            width: 99.5vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+            gap: 20px;
+        }
+        .box{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            
+        }
+        
+        #ans{
+            border: 1px solid #dadada;
+            padding-top: 20px;
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .yes{
+            background-color: greenyellow;
+        }
+        .no{
+            background-color: rgb( 220 0 0);
+        }
+        .clicked{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainbox">
+        <div class="do">Do you love me?</div>
+        <div class="box">
+            <div id="ans" class="yes">Yes</div>
+            <div id="ans" class="no">No</div>
+        </div>
+    </div>
+
+    <script>
+        let yes = document.querySelector(".yes");
+        let no = document.querySelector(".no");
+        yes.addEventListener("click",()=> {
+            let img = document.createElement("img");
+            img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbAeulWt-vOs2SeULY-TLYt-fl8B3rbBNEhg&s";
+            img.alt = "Padhle bhai, mujhse pyar karke tera ghar nahi chlega :)";
+            img.style.height = "100%";
+            img.style.width = "100%";
+            img.style.position="absolute";
+            img.style.top='0';
+            img.style.left='0';
+            let mainbox = document.querySelector(".mainbox");
+            document.querySelector("body").removeChild(mainbox);
+            document.querySelector("body").appendChild(img);
+        });
+        no.addEventListener("click",()=>{
+            no.style.position = "absolute";
+            let randomLeft = Math.random() * (window.innerWidth - no.offsetWidth);
+            let randomTop = Math.random() * (window.innerHeight - no.offsetHeight);
+            no.style.top=randomTop+"px";
+            no.style.left=randomLeft+"px";
+        });
+    </script>
+</body>
+</html>
